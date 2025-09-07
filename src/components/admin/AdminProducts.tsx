@@ -235,6 +235,10 @@ const AdminProducts: React.FC<AdminProductsProps> = ({
                         src={product.image && !product.image.startsWith('blob:') ? product.image : 'https://images.pexels.com/photos/4198019/pexels-photo-4198019.jpeg?auto=compress&cs=tinysrgb&w=400'}
                         alt={product.name}
                         className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg object-cover mr-2 sm:mr-3"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = 'https://images.pexels.com/photos/4198019/pexels-photo-4198019.jpeg?auto=compress&cs=tinysrgb&w=400';
+                        }}
                       />
                       <div>
                         <p className="text-xs sm:text-sm font-medium text-gray-900">{product.name}</p>
@@ -328,10 +332,6 @@ const AdminProducts: React.FC<AdminProductsProps> = ({
                     src={selectedProduct.image && !selectedProduct.image.startsWith('blob:') ? selectedProduct.image : 'https://images.pexels.com/photos/4198019/pexels-photo-4198019.jpeg?auto=compress&cs=tinysrgb&w=400'}
                     alt={selectedProduct.name}
                     className="w-full h-64 object-cover rounded-lg"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = 'https://images.pexels.com/photos/4198019/pexels-photo-4198019.jpeg?auto=compress&cs=tinysrgb&w=400';
-                    }}
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.src = 'https://images.pexels.com/photos/4198019/pexels-photo-4198019.jpeg?auto=compress&cs=tinysrgb&w=400';
