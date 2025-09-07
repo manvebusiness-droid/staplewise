@@ -223,8 +223,13 @@ const Home: React.FC = () => {
                 Explore Products
               </button>
               <button
-                onClick={() => setShowSellForm(true)}
-                onClick={() => navigate('/register')}
+                onClick={() => {
+                  if (!user) {
+                    navigate('/register');
+                  } else {
+                    setShowSellForm(true);
+                  }
+                }}
                 className="border-2 border-secondary text-secondary px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg sm:rounded-xl font-semibold text-sm sm:text-base md:text-lg hover:bg-secondary hover:text-primary transition-all duration-300 relative overflow-hidden group"
               >
                 <div className="absolute inset-0 bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
