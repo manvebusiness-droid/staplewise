@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Filter, Trash2, Package, Eye, X, MapPin, User, Calendar } from 'lucide-react';
+import { Search, Trash2, Package, Eye, X, MapPin, User, Calendar } from 'lucide-react';
 import { ProductService } from '../../lib/supabaseServices';
 
 interface AdminProductsProps {
@@ -235,10 +235,6 @@ const AdminProducts: React.FC<AdminProductsProps> = ({
                         src={product.image && !product.image.startsWith('blob:') ? product.image : 'https://images.pexels.com/photos/4198019/pexels-photo-4198019.jpeg?auto=compress&cs=tinysrgb&w=400'}
                         alt={product.name}
                         className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg object-cover mr-2 sm:mr-3"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = 'https://images.pexels.com/photos/4198019/pexels-photo-4198019.jpeg?auto=compress&cs=tinysrgb&w=400';
-                        }}
                       />
                       <div>
                         <p className="text-xs sm:text-sm font-medium text-gray-900">{product.name}</p>
@@ -378,11 +374,6 @@ const AdminProducts: React.FC<AdminProductsProps> = ({
                     <MapPin className="w-4 h-4 mr-2 text-gray-400" />
                     <span className="text-lg text-gray-900">{selectedProduct.location}</span>
                   </div>
-                      className="w-10 h-10 rounded-lg object-cover mr-3"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = 'https://images.pexels.com/photos/4198019/pexels-photo-4198019.jpeg?auto=compress&cs=tinysrgb&w=400';
-                      }}
                   <div>
                     <p className="text-sm text-gray-600">Delivery Time</p>
                     <p className="text-lg text-gray-900">{selectedProduct.delivery_time}</p>

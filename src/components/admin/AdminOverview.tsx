@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, ShoppingCart, MessageCircle, TrendingUp, Eye, Edit, Trash2 } from 'lucide-react';
+import { Users, ShoppingCart, MessageCircle, TrendingUp, Trash2 } from 'lucide-react';
 
 interface AdminOverviewProps {
   stats: {
@@ -10,8 +10,6 @@ interface AdminOverviewProps {
   };
   orders: any[];
   loading: boolean;
-  onViewOrder: (order: any) => void;
-  onEditOrder: (order: any) => void;
   onDeleteOrder: (orderId: string) => void;
   onUpdateOrderStatus: (orderId: string, status: string) => void;
 }
@@ -20,8 +18,6 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({
   stats,
   orders,
   loading,
-  onViewOrder,
-  onEditOrder,
   onDeleteOrder,
   onUpdateOrderStatus
 }) => {
@@ -131,20 +127,6 @@ const AdminOverview: React.FC<AdminOverviewProps> = ({
                       </select>
                     </div>
                     <div className="flex items-center space-x-1 sm:space-x-2">
-                      <button
-                        onClick={() => onViewOrder(order)}
-                        className="px-2 py-1 text-xs border border-blue-300 text-blue-600 rounded hover:bg-blue-50 transition-colors flex items-center flex-1 sm:flex-initial justify-center"
-                      >
-                        <Eye className="w-3 h-3 mr-1" />
-                        View
-                      </button>
-                      <button
-                        onClick={() => onEditOrder(order)}
-                        className="px-2 py-1 text-xs border border-green-300 text-green-600 rounded hover:bg-green-50 transition-colors flex items-center flex-1 sm:flex-initial justify-center"
-                      >
-                        <Edit className="w-3 h-3 mr-1" />
-                        Edit
-                      </button>
                       <button
                         onClick={() => onDeleteOrder(order.id)}
                         className="px-2 py-1 text-xs border border-red-300 text-red-600 rounded hover:bg-red-50 transition-colors flex items-center flex-1 sm:flex-initial justify-center"

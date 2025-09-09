@@ -220,7 +220,7 @@ const ProductDetail: React.FC = () => {
               <div className="grid grid-cols-2 gap-6">
                 <div>
                   <p className="text-3xl font-bold text-primary">₹{product.price_per_kg}</p>
-                  <p className="text-gray-600">per kg</p>
+                  <p className="text-gray-600">per kg (excl GST)</p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-600">Min Order</p>
@@ -415,7 +415,7 @@ const ProductDetail: React.FC = () => {
           <div className="bg-white rounded-2xl max-w-md w-full shadow-2xl">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
-                <h3 className="text-xl font-bold font-playfair text-primary">Contact Seller</h3>
+                <h3 className="text-xl font-bold font-playfair text-primary">Contact Us</h3>
                 <button
                   onClick={() => setShowContactPopup(false)}
                   className="text-gray-500 hover:text-gray-700 transition-colors"
@@ -426,22 +426,23 @@ const ProductDetail: React.FC = () => {
 
               <div className="space-y-4">
                 <div className="bg-gray-50 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-900 mb-3">Seller Information</h4>
+                  <h4 className="font-semibold text-gray-900 mb-3">Contact Information</h4>
                   <div className="space-y-2">
                     <div className="flex items-center">
                       <Mail className="w-4 h-4 mr-2 text-gray-400" />
-                      <span className="text-gray-700">{product.users?.email || 'Not available'}</span>
+                      <a href="mailto:zeeshan.staplewise@gmail.com" className="text-gray-700 hover:text-primary">zeeshan.staplewise@gmail.com</a>
                     </div>
                     <div className="flex items-center">
                       <Phone className="w-4 h-4 mr-2 text-gray-400" />
-                      <span className="text-gray-700">{product.users?.phone || 'Not available'}</span>
+                      <a href="tel:+917996191159" className="text-gray-700 hover:text-primary">+91 79961 91159</a>
+                      <span className="text-gray-500 ml-2">- Zeeshan</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-3">
                   <a
-                    href={`https://wa.me/${product.users?.phone?.replace(/\D/g, '')}`}
+                    href={`https://wa.me/917996191159`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center"
@@ -451,11 +452,11 @@ const ProductDetail: React.FC = () => {
                   </a>
                   
                   <a
-                    href={`mailto:${product.users?.email}`}
+                    href={`mailto:zeeshan.staplewise@gmail.com`}
                     className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center"
                   >
                     <Mail className="w-5 h-5 mr-2" />
-                    Send Email
+                    Email Zeeshan
                   </a>
                 </div>
               </div>

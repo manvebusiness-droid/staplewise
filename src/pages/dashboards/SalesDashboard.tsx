@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle, Clock, XCircle, Search, X, Trash2, Edit, Package, User, MapPin, Calendar, Phone, Mail, Building } from 'lucide-react';
+import { CheckCircle, Clock, XCircle, Search, X, Edit, Package, User, MapPin, Calendar, Phone, Mail, Building } from 'lucide-react';
 import { QueryService, DashboardService } from '../../lib/supabaseServices';
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -99,19 +99,7 @@ const SalesDashboard: React.FC = () => {
     }
   };
 
-  const handleDeleteQuery = async (queryId: string) => {
-    if (window.confirm('Are you sure you want to delete this query?')) {
-      try {
-        await QueryService.deleteQuery(queryId);
-        await loadSalesData(); // Refresh data
-        setSelectedQuery(null);
-        alert('Query deleted successfully!');
-      } catch (error) {
-        console.error('Error deleting query:', error);
-        alert('Failed to delete query');
-      }
-    }
-  };
+  // Delete action removed for sales dashboard per requirement
 
   // Update stats calculation
   const assignedQueries = queries.filter(q => q.status === 'ASSIGNED' || q.status === 'PENDING');
@@ -568,20 +556,7 @@ const SalesDashboard: React.FC = () => {
                 )}
               </div>
 
-              <div className="flex justify-between items-center mt-8 pt-6 border-t">
-                <div className="flex space-x-3">
-                  {(selectedQuery.status === 'ASSIGNED' || selectedQuery.status === 'PENDING') && (
-                    <div>
-                      <button
-                        onClick={() => handleDeleteQuery(selectedQuery.id)}
-                        className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors flex items-center"
-                      >
-                        <Trash2 className="w-4 h-4 mr-2" />
-                        Delete Query
-                      </button>
-                    </div>
-                  )}
-                </div>
+              <div className="flex justify-end items-center mt-8 pt-6 border-t">
                 <button
                   onClick={() => setSelectedQuery(null)}
                   className="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-colors"

@@ -179,8 +179,6 @@ const AdminDashboard: React.FC = () => {
             stats={stats}
             orders={orders}
             loading={loading}
-            onViewOrder={handleViewOrder}
-            onEditOrder={handleEditOrder}
             onDeleteOrder={handleDeleteOrder}
             onUpdateOrderStatus={handleUpdateOrderStatus}
           />

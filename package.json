@@ -6,12 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "start": "vite preview --port=$PORT",
     "lint": "eslint .",
     "preview": "vite preview",
     "db:seed": "tsx scripts/seed.ts"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@fontsource/playfair-display": "^5.2.6",
     "@fontsource/poppins": "^5.2.6",
     "@supabase/supabase-js": "^2.57.0",

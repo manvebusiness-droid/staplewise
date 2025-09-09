@@ -1,5 +1,4 @@
 import { supabase } from './supabase';
-import type { Database } from './supabase';
 
 export const signInWithGoogle = async () => {
   if (!supabase) {
@@ -7,10 +6,12 @@ export const signInWithGoogle = async () => {
   }
 
   try {
+    // Prefer a configured public site URL in production, fallback to current origin (useful for local dev)
+    const siteUrl = (import.meta as any).env?.VITE_PUBLIC_SITE_URL || window.location.origin;
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
+        redirectTo: `${siteUrl.replace(/\/$/, '')}/auth/callback`,
       },
     });
 
@@ -50,6 +51,11 @@ export interface RegisterData {
 }
 
 export class SupabaseAuthService {
+  static getSiteUrl(): string {
+    const siteUrl = (import.meta as any).env?.VITE_PUBLIC_SITE_URL || window.location.origin;
+    return siteUrl.replace(/\/$/, '');
+  }
+
   static async register(data: RegisterData): Promise<{ user: AuthUser; token: string }> {
     if (!supabase) {
       throw new Error('Supabase is not configured. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env file.');
@@ -222,6 +228,25 @@ export class SupabaseAuthService {
     if (error) throw error;
   }
 
+  static async requestPasswordReset(email: string): Promise<void> {
+    if (!supabase) {
+      throw new Error('Supabase is not configured. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env file.');
+    }
+    const redirectTo = `${this.getSiteUrl()}/reset-password`;
+    const client = supabase!;
+    const { error } = await client.auth.resetPasswordForEmail(email, { redirectTo });
+    if (error) throw error;
+  }
+
+  static async updatePassword(newPassword: string): Promise<void> {
+    if (!supabase) {
+      throw new Error('Supabase is not configured.');
+    }
+    const client = supabase!;
+    const { error } = await client.auth.updateUser({ password: newPassword });
+    if (error) throw error;
+  }
+
   static async getCurrentUser(): Promise<AuthUser | null> {
     if (!supabase) return null;
     
@@ -254,6 +279,9 @@ export class SupabaseAuthService {
 
   static async updateProfile(userId: string, updates: Partial<AuthUser>): Promise<AuthUser> {
     try {
+      if (!supabase) {
+        throw new Error('Supabase is not configured.');
+      }
       const { data, error } = await supabase
         .from('users')
         .update({

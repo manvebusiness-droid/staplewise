@@ -22,15 +22,23 @@ const Footer: React.FC = () => {
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
-                <span className="text-gray-200">info@staplewise.com</span>
+                <a href="mailto:zahid.staplewise@gmail.com" className="text-gray-200 hover:text-white">zahid.staplewise@gmail.com</a>
               </div>
               <div className="flex items-center space-x-2">
+                <Mail className="w-4 h-4 opacity-0" />
+                <a href="mailto:zeeshan.staplewise@gmail.com" className="text-gray-200 hover:text-white">zeeshan.staplewise@gmail.com</a>
+              </div>
+              <div className="flex items-center space-x-2 mt-2">
                 <Phone className="w-4 h-4" />
-                <span className="text-gray-200">+91 98765 43210</span>
+                <a href="tel:+917996191159" className="text-gray-200 hover:text-white">+91 79961 91159 (Zeeshan)</a>
               </div>
               <div className="flex items-center space-x-2">
+                <Phone className="w-4 h-4 opacity-0" />
+                <a href="tel:+919606156335" className="text-gray-200 hover:text-white">+91 96061 56335 (Zahid)</a>
+              </div>
+              <div className="flex items-center space-x-2 mt-2">
                 <MapPin className="w-4 h-4" />
-                <span className="text-gray-200">Bangalore, Karnataka, India</span>
+                <span className="text-gray-200">6th Main, Venketapura, Teacher's Colony, Jakkasandra, 1st Block Koramangala, Koramangala, Bengaluru</span>
               </div>
             </div>
           </div>
@@ -61,6 +69,17 @@ const Footer: React.FC = () => {
         <div className="border-t border-primary/20 mt-8 pt-8 text-center">
           <p className="text-gray-200">
             © 2024 StapleWise. All rights reserved. | Empowering cashew procurement across India.
+          </p>
+          <p className="text-gray-300 mt-2 text-sm">
+            Powered by{' '}
+            <a
+              href="https://manve.co"
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-4 hover:text-white"
+            >
+              Manve
+            </a>
           </p>
         </div>
       </div>

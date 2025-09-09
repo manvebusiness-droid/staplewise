@@ -4,28 +4,16 @@ import { Users, Target, Eye, Handshake, Star, Award, TrendingUp } from 'lucide-r
 const About: React.FC = () => {
   const teamMembers = [
     {
-      name: 'Rajesh Kumar',
-      role: 'Founder & CEO',
-      image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300',
-      description: '15+ years in agri-commodity trading'
+      name: 'Zahid Hussain',
+      role: 'Accounting & Logistics Lead',
+      image: 'https://supabase.manve.co/storage/v1/object/public/static//WhatsApp%20Image%202025-09-09%20at%2015.36.52.jpeg',
+      description: 'With over 25 years of experience, Zahid Hussain specializes in accounting and logistics, helping businesses streamline operations and ensure financial accuracy. He has managed accounting functions and led logistics services in import–export and distribution, optimizing supply chains and ensuring timely deliveries. His expertise in combining financial discipline with operational efficiency makes him a trusted leader in supporting large-scale trade and logistics networks.'
     },
     {
-      name: 'Priya Sharma',
-      role: 'Co-Founder & CTO',
-      image: 'https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=300',
-      description: 'Technology expert with fintech background'
-    },
-    {
-      name: 'Arjun Nair',
-      role: 'Head of Operations',
-      image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300',
-      description: 'Supply chain and logistics specialist'
-    },
-    {
-      name: 'Kavitha Reddy',
-      role: 'Head of Quality',
-      image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300',
-      description: 'Food quality and safety expert'
+      name: 'Zeeshan Hussain',
+      role: 'Co-Founder',
+      image: 'https://supabase.manve.co/storage/v1/object/public/static//WhatsApp%20Image%202025-09-09%20at%2015.38.17.jpeg',
+      description: 'A driven co-founder with a proven track record of scaling businesses and building high-performing teams. He has founded and led ventures that support startups with growth, compliance, and operations, and now focuses Staple Wise a technology-enabled, transparent solutions connecting factories, wholesalers, and processing units. Known for strategic thinking, operational expertise, and collaborative leadership, Zeeshan drives the platform’s mission to solve real-world business challenges.'
     }
   ];
 
@@ -132,7 +120,7 @@ const About: React.FC = () => {
             Meet Our Team
             <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-primary to-accent rounded-full"></div>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {teamMembers.map((member, index) => (
               <div key={index} className="bg-white rounded-2xl p-6 shadow-soft text-center hover:shadow-soft-lg transition-all duration-300 transform hover:-translate-y-2 group relative overflow-hidden">
                 {/* Card Effects */}
@@ -152,7 +140,7 @@ const About: React.FC = () => {
                 <p className="text-accent font-semibold mb-3 group-hover:text-primary transition-colors duration-300 relative z-10">
                   {member.role}
                 </p>
-                <p className="text-gray-600 text-sm relative z-10">
+                <p className="text-gray-700 text-sm md:text-base leading-relaxed text-left relative z-10">
                   {member.description}
                 </p>
               </div>

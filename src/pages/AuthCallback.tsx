@@ -16,7 +16,7 @@ const AuthCallback: React.FC = () => {
           return;
         }
 
-        // Get the session from the URL
+        // Get the session from the URL (handles OAuth and password recovery sessions)
         const { data: { session }, error } = await supabase.auth.getSession();
         
         if (error) {
@@ -26,6 +26,12 @@ const AuthCallback: React.FC = () => {
         }
 
         if (session?.user) {
+          // If this is a password recovery session, send user to reset-password page
+          const hash = window.location.hash || '';
+          if (hash.includes('type=recovery')) {
+            navigate('/reset-password');
+            return;
+          }
           console.log('✅ Google OAuth successful:', session.user.email);
           
           // Check if user profile exists in our users table

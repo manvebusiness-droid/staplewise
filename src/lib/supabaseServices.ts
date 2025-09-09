@@ -439,19 +439,34 @@ export class OrderService {
             id,
             name,
             email,
-            company_name
+            company_name,
+            phone
           ),
           seller:users!orders_seller_id_fkey (
             id,
             name,
             email,
-            company_name
+            company_name,
+            phone
           )
         `)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      return data || [];
+      // Flatten related fields for UI compatibility
+      const mapped = (data || []).map((o: any) => ({
+        ...o,
+        seller_name: o.seller?.name || null,
+        seller_email: o.seller?.email || null,
+        seller_phone: o.seller?.phone || null,
+        seller_company: o.seller?.company_name || null,
+        buyer_name: o.buyer?.name || null,
+        buyer_email: o.buyer?.email || null,
+        buyer_company: o.buyer?.company_name || null,
+        buyer_phone: o.buyer?.phone || null,
+        products: o.products || null
+      }));
+      return mapped;
     } catch (error) {
       console.error('Error fetching orders:', error);
       throw error;
@@ -478,14 +493,23 @@ export class OrderService {
             id,
             name,
             email,
-            company_name
+            company_name,
+            phone
           )
         `)
         .eq('seller_id', sellerId)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      return data || [];
+      const mapped = (data || []).map((o: any) => ({
+        ...o,
+        buyer_name: o.buyer?.name || null,
+        buyer_email: o.buyer?.email || null,
+        buyer_company: o.buyer?.company_name || null,
+        buyer_phone: o.buyer?.phone || null,
+        products: o.products || null
+      }));
+      return mapped;
     } catch (error) {
       console.error('Error fetching seller orders:', error);
       throw error;

@@ -31,7 +31,7 @@ const Home: React.FC = () => {
       id: 'cashews',
       name: 'Cashews',
       icon: Package,
-      image: 'https://images.pexels.com/photos/4198019/pexels-photo-4198019.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://supabase.manve.co/storage/v1/object/public/static//intro-1724162430.jpg',
       description: 'Premium quality cashew kernels in various grades',
       varieties: ['W180', 'W210', 'W240', 'W320', 'W400', 'LWP', 'SWP', 'BB']
     },
@@ -39,7 +39,7 @@ const Home: React.FC = () => {
       id: 'cloves',
       name: 'Cloves',
       icon: Zap,
-      image: 'https://images.pexels.com/photos/4198020/pexels-photo-4198020.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://supabase.manve.co/storage/v1/object/public/static//file-20250812-66-xz5y9j.jpg.avif',
       description: 'Aromatic whole cloves for culinary and medicinal use',
       varieties: ['Whole Cloves', 'Ground Cloves', 'Clove Oil']
     },
@@ -47,7 +47,7 @@ const Home: React.FC = () => {
       id: 'chillies',
       name: 'Chillies',
       icon: Zap,
-      image: 'https://images.pexels.com/photos/4198021/pexels-photo-4198021.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://supabase.manve.co/storage/v1/object/public/static//indias-red-chilli-export-surge.jpg',
       description: 'Fresh and dried chillies with varying heat levels',
       varieties: ['Red Chilli', 'Green Chilli', 'Kashmiri Chilli', 'Guntur Chilli']
     },
@@ -55,7 +55,7 @@ const Home: React.FC = () => {
       id: 'star-anise',
       name: 'Star Anise',
       icon: Package,
-      image: 'https://images.pexels.com/photos/4198022/pexels-photo-4198022.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://supabase.manve.co/storage/v1/object/public/static//Star-Anise-1.jpg.webp',
       description: 'Star-shaped spice with sweet licorice flavor',
       varieties: ['Whole Star Anise', 'Broken Star Anise', 'Ground Star Anise']
     },
@@ -63,7 +63,7 @@ const Home: React.FC = () => {
       id: 'pepper',
       name: 'Pepper',
       icon: Package,
-      image: 'https://images.pexels.com/photos/4110256/pexels-photo-4110256.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://supabase.manve.co/storage/v1/object/public/static//images.jpeg',
       description: 'Black and white peppercorns for seasoning',
       varieties: ['Black Pepper', 'White Pepper', 'Green Pepper', 'Pink Pepper']
     },
@@ -71,7 +71,7 @@ const Home: React.FC = () => {
       id: 'cinnamon',
       name: 'Cinnamon',
       icon: Package,
-      image: 'https://images.pexels.com/photos/4110257/pexels-photo-4110257.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://supabase.manve.co/storage/v1/object/public/static//Star-Anise-1.jpg.webp',
       description: 'Sweet and aromatic cinnamon bark and powder',
       varieties: ['Ceylon Cinnamon', 'Cassia Cinnamon', 'Cinnamon Powder', 'Cinnamon Sticks']
     }
@@ -223,13 +223,8 @@ const Home: React.FC = () => {
                 Explore Products
               </button>
               <button
-                onClick={() => {
-                  if (!user) {
-                    navigate('/register');
-                  } else {
-                    setShowSellForm(true);
-                  }
-                }}
+                onClick={() => setShowSellForm(true)}
+                onClick={() => navigate('/register')}
                 className="border-2 border-secondary text-secondary px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg sm:rounded-xl font-semibold text-sm sm:text-base md:text-lg hover:bg-secondary hover:text-primary transition-all duration-300 relative overflow-hidden group"
               >
                 <div className="absolute inset-0 bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>

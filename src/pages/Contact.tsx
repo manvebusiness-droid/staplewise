@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, MessageCircle, Send, Clock, Globe, Users } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -9,12 +10,38 @@ const Contact: React.FC = () => {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Contact form submitted:', formData);
-    alert('Thank you for your message! We\'ll get back to you soon.');
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
+
+      if (!serviceId || !templateId || !publicKey) {
+        console.error('EmailJS env vars missing');
+        alert('Email service is not configured. Please try again later.');
+        return;
+      }
+
+      // Initialize EmailJS with public key (safer across versions)
+      emailjs.init({ publicKey });
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        from_phone: formData.phone || 'Not provided',
+        message: formData.message
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams);
+
+      alert('Thank you for your message! We\'ll get back to you soon.');
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    } catch (err: any) {
+      console.error('Failed to send contact email:', err);
+      const msg = typeof err?.text === 'string' ? err.text : 'Please try again later.';
+      alert(`Failed to send your message. ${msg}`);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -68,8 +95,12 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-primary mb-1 group-hover:text-accent transition-colors duration-300">Email</h3>
-                  <p className="text-gray-600">info@staplewise.com</p>
-                  <p className="text-gray-600">support@staplewise.com</p>
+                  <p className="text-gray-600">
+                    <a href="mailto:zahid.staplewise@gmail.com" className="hover:text-primary underline-offset-2 hover:underline">zahid.staplewise@gmail.com</a>
+                  </p>
+                  <p className="text-gray-600">
+                    <a href="mailto:zeeshan.staplewise@gmail.com" className="hover:text-primary underline-offset-2 hover:underline">zeeshan.staplewise@gmail.com</a>
+                  </p>
                 </div>
               </div>
 
@@ -79,8 +110,12 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-primary mb-1 group-hover:text-accent transition-colors duration-300">Phone</h3>
-                  <p className="text-gray-600">+91 98765 43210</p>
-                  <p className="text-gray-600">+91 98765 43211</p>
+                  <p className="text-gray-600">
+                    <a href="tel:+917996191159" className="hover:text-primary">+91 79961 91159</a> <span className="text-gray-500">- Zeeshan</span>
+                  </p>
+                  <p className="text-gray-600">
+                    <a href="tel:+919606156335" className="hover:text-primary">+91 96061 56335</a> <span className="text-gray-500">- Zahid</span>
+                  </p>
                 </div>
               </div>
 
@@ -90,7 +125,9 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-primary mb-1 group-hover:text-accent transition-colors duration-300">WhatsApp</h3>
-                  <p className="text-gray-600">+91 98765 43210</p>
+                  <p className="text-gray-600">
+                    <a href="https://wa.me/919606156335" target="_blank" rel="noreferrer" className="hover:text-primary">+91 96061 56335</a>
+                  </p>
                   <p className="text-sm text-gray-500">Available 9 AM - 6 PM IST</p>
                 </div>
               </div>
@@ -102,23 +139,27 @@ const Contact: React.FC = () => {
                 <div>
                   <h3 className="text-lg font-semibold text-primary mb-1 group-hover:text-accent transition-colors duration-300">Office</h3>
                   <p className="text-gray-600">
-                    123 Business District<br />
-                    Koramangala, Bangalore - 560034<br />
-                    Karnataka, India
+                    6th Main, Venketapura, Teacher's Colony, Jakkasandra,<br />
+                    1st Block Koramangala, Koramangala, Bengaluru
+                  </p>
+                  <p className="mt-2">
+                    <a href="https://maps.app.goo.gl/c9PxpxmqKEALpThJA" target="_blank" rel="noreferrer" className="text-primary hover:text-accent underline underline-offset-4">View on Google Maps</a>
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Google Map Placeholder */}
-            <div className="bg-gray-200 rounded-2xl h-64 flex items-center justify-center hover:bg-gray-100 transition-colors duration-300 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="text-center text-gray-500">
-                <MapPin className="w-12 h-12 mx-auto mb-2 group-hover:text-primary transition-colors duration-300" />
-                <p>Interactive Map</p>
-                <p className="text-sm">Koramangala, Bangalore</p>
+            <a href="https://maps.app.goo.gl/c9PxpxmqKEALpThJA" target="_blank" rel="noreferrer" className="block">
+              <div className="bg-gray-200 rounded-2xl h-64 flex items-center justify-center hover:bg-gray-100 transition-colors duration-300 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="text-center text-gray-500">
+                  <MapPin className="w-12 h-12 mx-auto mb-2 group-hover:text-primary transition-colors duration-300" />
+                  <p>View our location on Google Maps</p>
+                  <p className="text-sm">Koramangala, Bengaluru</p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
 
           {/* Contact Form */}

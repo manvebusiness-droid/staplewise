@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, Eye, EyeOff, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
-import { signInWithGoogle } from '../../lib/supabaseAuth';
+import { signInWithGoogle, SupabaseAuthService } from '../../lib/supabaseAuth';
 
 interface LoginModalProps {
   onClose: () => void;
@@ -147,12 +147,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
     setLoading(true);
     setError('');
     setSuccess('');
-
-    // Mock forgot password
-    setTimeout(() => {
+    try {
+      await SupabaseAuthService.requestPasswordReset(forgotPasswordData.email);
       setSuccess('Password reset email sent! Check your inbox.');
+    } catch (err) {
+      setError('Could not send reset email. Please try again.');
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   const handleResetPassword = async (e: React.FormEvent) => {
@@ -166,19 +168,20 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
       setLoading(false);
       return;
     }
-
-    // Mock reset password
-    setTimeout(() => {
+    try {
+      await SupabaseAuthService.updatePassword(resetPasswordData.newPassword);
       setSuccess('Password reset successfully! You can now login.');
-      // Reset form and go back to login
       setTimeout(() => {
         setShowResetPassword(false);
         setShowForgotPassword(false);
         setResetPasswordData({ resetToken: '', newPassword: '', confirmPassword: '' });
         setSuccess('');
-      }, 2000);
+      }, 1500);
+    } catch (err) {
+      setError('Could not reset password. Open the reset link and try again.');
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (

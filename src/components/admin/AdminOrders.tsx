@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Plus, Search, Download, X, Eye, Edit, Trash2 } from 'lucide-react';
 import * as XLSX from 'xlsx';
 import { OrderService } from '../../lib/supabaseServices';
+import { useAuth } from '../../contexts/AuthContext';
 
 interface AdminOrdersProps {
   orders: any[];
@@ -24,6 +25,7 @@ const AdminOrders: React.FC<AdminOrdersProps> = ({
   onDeleteOrder,
   onUpdateOrderStatus
 }) => {
+  const { user } = useAuth();
   const [showOrderForm, setShowOrderForm] = useState(false);
   const [editingOrder, setEditingOrder] = useState<any>(null);
   const [orderForm, setOrderForm] = useState({
@@ -104,7 +106,7 @@ const AdminOrders: React.FC<AdminOrdersProps> = ({
       
       const orderData = {
         order_number: orderNumber,
-        buyer_id: '550e8400-e29b-41d4-a716-446655440000', // Admin user as buyer
+        buyer_id: user?.id, // Logged-in admin as buyer
         seller_id: orderForm.sellerId,
         product_name: orderForm.productName,
         product_category: orderForm.category,
