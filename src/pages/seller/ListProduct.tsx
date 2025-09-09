@@ -228,6 +228,13 @@ const ListProduct: React.FC = () => {
           <h2 className="text-2xl font-bold font-playfair text-primary mb-6">
             {editingProduct ? 'Edit Product' : 'Add New Product'}
           </h2>
+
+          {/* Platform Fee Notice */}
+          <div className="mb-6 rounded-lg border border-yellow-200 bg-yellow-50 p-4 text-yellow-800">
+            <p className="text-sm sm:text-base">
+              <span className="font-semibold">Notice:</span> Kindly include a 2% platform fee in your listing price. This helps us negotiate better deals with buyers and support smooth transactions for you.
+            </p>
+          </div>
           
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Basic Information */}
