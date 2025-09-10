@@ -36,44 +36,44 @@ const Home: React.FC = () => {
       varieties: ['W180', 'W210', 'W240', 'W320', 'W400', 'LWP', 'SWP', 'BB']
     },
     {
-      id: 'cloves',
-      name: 'Cloves',
-      icon: Zap,
-      image: 'https://supabase.manve.co/storage/v1/object/public/static//file-20250812-66-xz5y9j.jpg.avif',
-      description: 'Aromatic whole cloves for culinary and medicinal use',
-      varieties: ['Whole Cloves', 'Ground Cloves', 'Clove Oil']
-    },
-    {
-      id: 'chillies',
-      name: 'Chillies',
-      icon: Zap,
-      image: 'https://supabase.manve.co/storage/v1/object/public/static//indias-red-chilli-export-surge.jpg',
-      description: 'Fresh and dried chillies with varying heat levels',
-      varieties: ['Red Chilli', 'Green Chilli', 'Kashmiri Chilli', 'Guntur Chilli']
-    },
-    {
-      id: 'star-anise',
-      name: 'Star Anise',
+      id: 'raisins',
+      name: 'Raisins',
       icon: Package,
-      image: 'https://supabase.manve.co/storage/v1/object/public/static//Star-Anise-1.jpg.webp',
-      description: 'Star-shaped spice with sweet licorice flavor',
-      varieties: ['Whole Star Anise', 'Broken Star Anise', 'Ground Star Anise']
+      image: 'https://supabase.manve.co/storage/v1/object/public/static//raisins-on-a-wooden-spoon.jpg',
+      description: 'High-quality raisins for snacking and processing',
+      varieties: ['Golden Raisins', 'Black Raisins', 'Sultanas']
     },
     {
-      id: 'pepper',
-      name: 'Pepper',
+      id: 'almonds',
+      name: 'Almonds',
       icon: Package,
-      image: 'https://supabase.manve.co/storage/v1/object/public/static//images.jpeg',
-      description: 'Black and white peppercorns for seasoning',
-      varieties: ['Black Pepper', 'White Pepper', 'Green Pepper', 'Pink Pepper']
+      image: 'https://supabase.manve.co/storage/v1/object/public/static//360_F_119498169_S5gkbK2KZkTpMXizvpwWjBIz8cp9pzD7.jpg',
+      description: 'Whole almonds sourced from trusted suppliers',
+      varieties: ['Nonpareil', 'Carmel', 'Monterey']
     },
     {
-      id: 'cinnamon',
-      name: 'Cinnamon',
+      id: 'walnuts',
+      name: 'Walnuts',
       icon: Package,
-      image: 'https://supabase.manve.co/storage/v1/object/public/static//Star-Anise-1.jpg.webp',
-      description: 'Sweet and aromatic cinnamon bark and powder',
-      varieties: ['Ceylon Cinnamon', 'Cassia Cinnamon', 'Cinnamon Powder', 'Cinnamon Sticks']
+      image: 'https://supabase.manve.co/storage/v1/object/public/static//Walnuts-iStock-1058321136.jpg',
+      description: 'Premium walnut kernels and in-shell walnuts',
+      varieties: ['Light Halves', 'Light Quarters', 'In-shell']
+    },
+    {
+      id: 'pistachio',
+      name: 'Pistachios',
+      icon: Package,
+      image: 'https://supabase.manve.co/storage/v1/object/public/static//IMG_7829_2048x.webp',
+      description: 'Naturally opened pistachios with rich flavor',
+      varieties: ['Fandoghi', 'Kalehghouchi', 'Akbari']
+    },
+    {
+      id: 'dates',
+      name: 'Dates',
+      icon: Package,
+      image: 'https://supabase.manve.co/storage/v1/object/public/static//117130927.avif',
+      description: 'Fresh and premium dates for wholesale',
+      varieties: ['Medjool', 'Deglet Noor', 'Safawi']
     }
   ];
   const features = [
@@ -228,7 +228,7 @@ const Home: React.FC = () => {
                 className="border-2 border-secondary text-secondary px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-lg sm:rounded-xl font-semibold text-sm sm:text-base md:text-lg hover:bg-secondary hover:text-primary transition-all duration-300 relative overflow-hidden group"
               >
                 <div className="absolute inset-0 bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                <span className="relative z-10">Join as Seller</span>
+                <span className="relative z-10">Join Us</span>
               </button>
             </div>
           </div>
@@ -323,7 +323,7 @@ const Home: React.FC = () => {
               <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-primary to-accent rounded-full"></div>
             </h2>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 max-w-3xl mx-auto px-4 leading-relaxed">
-              Explore our comprehensive range of premium spices and agricultural products
+              Explore our comprehensive range of premium dry fruits and agricultural products
             </p>
           </div>
 
