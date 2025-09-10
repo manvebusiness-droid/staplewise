@@ -123,7 +123,7 @@ const Home: React.FC = () => {
   ];
 
   const stats = [
-    { label: 'Active Suppliers', value: '500+', icon: Users },
+    { label: 'Active Participants', value: '200+', icon: Users },
     { label: 'Product Varieties', value: '25+', icon: Package },
     { label: 'Cities Covered', value: '50+', icon: MapPin },
     { label: 'Monthly Growth', value: '15%', icon: TrendingUp }
