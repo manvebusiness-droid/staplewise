@@ -28,11 +28,11 @@ const Header: React.FC = () => {
 
   const categories = [
     { id: 'cashews', name: 'Cashews' },
-    { id: 'cloves', name: 'Cloves' },
-    { id: 'chillies', name: 'Chillies' },
-    { id: 'star-anise', name: 'Star Anise' },
-    { id: 'pepper', name: 'Pepper' },
-    { id: 'cinnamon', name: 'Cinnamon' }
+    { id: 'raisins', name: 'Raisins' },
+    { id: 'almonds', name: 'Almonds' },
+    { id: 'walnuts', name: 'Walnuts' },
+    { id: 'pistachio', name: 'Pistachios' },
+    { id: 'dates', name: 'Dates' }
   ];
 
   const handleLogout = () => {
@@ -112,12 +112,12 @@ const Header: React.FC = () => {
                               <div className="p-4">
                                 <h4 className="font-semibold text-primary mb-2">{category.name}</h4>
                                 <p className="text-sm text-gray-600 mb-3">
-                                  {category.id === 'cashews' ? 'Premium quality cashew kernels in various grades' :
-                                   category.id === 'cloves' ? 'Aromatic whole cloves for culinary use' :
-                                   category.id === 'chillies' ? 'Fresh and dried chillies with varying heat levels' :
-                                   category.id === 'star-anise' ? 'Star-shaped spice with sweet licorice flavor' :
-                                   category.id === 'pepper' ? 'Black and white peppercorns for seasoning' :
-                                   'Sweet and aromatic cinnamon bark and powder'}
+                                  {category.id === 'cashews' ? 'Premium cashew kernels in multiple grades' :
+                                   category.id === 'raisins' ? 'High-quality raisins for snacking and processing' :
+                                   category.id === 'almonds' ? 'Whole almonds sourced from trusted suppliers' :
+                                   category.id === 'walnuts' ? 'Premium walnut kernels and in-shell walnuts' :
+                                   category.id === 'pistachio' ? 'Naturally opened pistachios with rich flavor' :
+                                   'Fresh and premium dates for wholesale'}
                                 </p>
                                 <button
                                   onClick={() => handleCategoryClick(category.id)}
