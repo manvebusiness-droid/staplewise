@@ -512,7 +512,7 @@ const CompanyDetails: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Registrar Name *
+                  Company Registration Name *
                 </label>
                 <input
                   type="text"

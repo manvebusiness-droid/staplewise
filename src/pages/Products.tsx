@@ -116,7 +116,7 @@ const Products: React.FC = () => {
                   name="search"
                   value={filters.search}
                   onChange={handleFilterChange}
-                  placeholder="Search products..."
+                  placeholder="Search products, SKU, or specifications..."
                   className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
                 />
               </div>
@@ -189,7 +189,7 @@ const Products: React.FC = () => {
                       name="search"
                       value={filters.search}
                       onChange={handleFilterChange}
-                      placeholder="Search products..."
+                      placeholder="Search products, SKU, or specifications..."
                       className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
                     />
                   </div>

@@ -104,7 +104,7 @@ export class ProductService {
       }
 
       if (filters?.search) {
-        query = query.or(`name.ilike.%${filters.search}%,specifications.ilike.%${filters.search}%`);
+        query = query.or(`name.ilike.%${filters.search}%,specifications.ilike.%${filters.search}%,sku.ilike.%${filters.search}%`);
       }
 
       if (filters?.priceRange) {
